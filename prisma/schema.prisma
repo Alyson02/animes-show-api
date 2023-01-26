@@ -10,7 +10,9 @@ model Anime {
   name String  @unique
   episodes Int
   finished Boolean
+  imageUrl String @default("")
 }
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
