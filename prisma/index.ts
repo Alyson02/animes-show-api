@@ -15,6 +15,10 @@ async function main() {
         ]
     })
 
+    await prisma.nationality.createMany({ data: [{ country: "Japan", state: "Tokyo" }] })
+
+    await prisma.author.createMany({ data: [{ name: "Makoto Shinkai", nationalityId: 1 }] })
+
     await prisma.anime.createMany({
         data: [
             {
@@ -50,7 +54,8 @@ async function main() {
                 episodes: 44,
                 finished: false,
                 categoryId: 1,
-                imageUrl: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/d48d4a62b0ac6381c87bd040b69b0a89.jpe"
+                imageUrl: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/d48d4a62b0ac6381c87bd040b69b0a89.jpe",
+                authorId: 1
             },
             {
                 name: "Islime Shintara",
