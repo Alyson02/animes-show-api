@@ -11,6 +11,35 @@ model Anime {
   episodes Int
   finished Boolean
   imageUrl String @default("")
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  Author Author? @relation(fields: [authorId], references: [id])
+  authorId Int?
+  @@map("animes")
+}
+
+model Category{
+  id  Int @id @default(autoincrement())
+  description String
+  anime Anime[]
+  @@map("categories")
+}
+
+model Author{
+  id Int @id @default(autoincrement())
+  name String
+  nationality Nationality @relation(fields: [nationalityId], references: [id])
+  nationalityId Int
+  anime Anime[]
+  @@map("authors")
+}
+
+model Nationality{
+  id Int @id @default(autoincrement())
+  country String
+  state String
+  author Author[]
+  @@map("nationalities")
 }
 
 datasource db {
