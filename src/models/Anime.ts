@@ -1,12 +1,12 @@
 import Joi from "joi";
 
 export default Joi.object({
-    name: Joi.string,
-    episodes: Joi.number,
-    finished: Joi.bool,
-    imageUrl: Joi.string,
-    categoryId: Joi.number,
-    authorId: Joi.number,
+    name: Joi.string().required().max(400),
+    episodes: Joi.number().required(),
+    finished: Joi.bool().required(),
+    imageUrl: Joi.string().required().uri().max(400),
+    categoryId: Joi.number().required().greater(0),
+    authorId: Joi.number().default(0),
 })
 
 
