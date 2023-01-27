@@ -5,6 +5,7 @@ export default prisma;
 
 async function main() {
     await prisma.category.createMany({
+        skipDuplicates: true,
         data: [
             {
                 description: "ação"
@@ -12,14 +13,16 @@ async function main() {
             {
                 description: "isekai"
             }
-        ]
+        ],
+
     })
 
-    await prisma.nationality.createMany({ data: [{ country: "Japan", state: "Tokyo" }] })
+    await prisma.nationality.createMany({ skipDuplicates: true, data: [{ country: "Japan", state: "Tokyo" }] })
 
-    await prisma.author.createMany({ data: [{ name: "Makoto Shinkai", nationalityId: 1 }] })
+    await prisma.author.createMany({ skipDuplicates: true, data: [{ name: "Makoto Shinkai", nationalityId: 1 }] })
 
     await prisma.anime.createMany({
+        skipDuplicates: true,
         data: [
             {
                 name: "Boku no Hero",
