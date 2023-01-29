@@ -2,11 +2,11 @@ import { Author } from "@prisma/client";
 import prisma from "../../prisma";
 
 async function list(): Promise<Author[]> {
-    return await prisma.author.findMany();
+    return await prisma.author.findMany({ include: { anime: true } });
 }
 
 async function getById(id: number): Promise<Author> {
-    return await prisma.author.findFirst({ where: { id: id } })
+    return await prisma.author.findFirst({ where: { id: id }, include: { anime: true } })
 }
 
 async function getByName(name: string): Promise<Author> {
