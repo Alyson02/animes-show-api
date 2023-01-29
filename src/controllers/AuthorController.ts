@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import service from "@/services/AnimeService"
+import service from "@/services/AuthorService"
 import { Anime } from "@prisma/client";
 import httpStatus from "http-status";
 

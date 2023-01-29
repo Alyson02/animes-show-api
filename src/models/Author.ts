@@ -1,5 +1,6 @@
 import Joi from "joi";
 
 export default Joi.object({
-    name: Joi.string().required()
+    name: Joi.string().required(),
+    nationalityId: Joi.number().required()
 })
