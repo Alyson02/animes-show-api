@@ -27,7 +27,7 @@ model Category{
 
 model Author{
   id Int @id @default(autoincrement())
-  name String
+  name String @unique
   nationality Nationality @relation(fields: [nationalityId], references: [id])
   nationalityId Int
   anime Anime[]
@@ -36,7 +36,7 @@ model Author{
 
 model Nationality{
   id Int @id @default(autoincrement())
-  country String
+  country String @unique
   state String
   author Author[]
   @@map("nationalities")
