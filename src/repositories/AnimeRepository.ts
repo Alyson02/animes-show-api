@@ -1,5 +1,4 @@
 import { Anime } from "@prisma/client";
-import { CLIENT_RENEG_LIMIT } from "tls";
 import prisma from "../../prisma";
 
 async function list(): Promise<Anime[]> {
@@ -8,6 +7,10 @@ async function list(): Promise<Anime[]> {
 
 async function getById(id: number): Promise<Anime> {
     return await prisma.anime.findFirst({ where: { id: id } })
+}
+
+async function getByName(name: string): Promise<Anime> {
+    return await prisma.anime.findFirst({ where: { name: name } })
 }
 
 async function create(anime: Partial<Anime>): Promise<void> {
@@ -31,5 +34,6 @@ export default {
     getById,
     create,
     update,
-    remove
+    remove,
+    getByName
 }
