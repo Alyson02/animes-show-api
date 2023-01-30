@@ -4,8 +4,8 @@ import notFoundError from "@/errors/notFoundError";
 import AnimeRepository from "@/repositories/AnimeRepository"
 import { Anime } from "@prisma/client";
 
-async function list() {
-    return await AnimeRepository.list();
+async function list(name: string) {
+    return await AnimeRepository.list(name);
 }
 
 async function getById(id: number) {

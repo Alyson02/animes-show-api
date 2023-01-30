@@ -4,7 +4,8 @@ import { Anime } from "@prisma/client";
 import httpStatus from "http-status";
 
 export async function list(req: Request, res: Response) {
-    return res.send(await service.list());
+    const name: string = req.query.name as string || "";
+    return res.send(await service.list(name));
 }
 export async function getById(req: Request, res: Response, next: NextFunction) {
     return res.send(await service.getById(Number(req.params.id)));
